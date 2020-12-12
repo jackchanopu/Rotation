@@ -1,0 +1,10 @@
+#gereral form of Cardioid Curve r = a +- bcos(theta) or r a+- bsin(theta) with a/b = 1
+
+import numpy
+import matplotlib.pyplot as plt
+
+theta = numpy.linspace(0, 2*numpy.pi, 1000)
+r = 1 - 1 * numpy.sin(theta)
+plt.polar(theta, r, 'r')
+plt.show()
+plt.savefig('destination_path.eps', format='eps')
