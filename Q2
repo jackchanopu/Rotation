@@ -1,0 +1,33 @@
+import random
+import math
+import matplotlib.pyplot as plt
+
+def monte_carlo(runs,needles,n_length,b_width):
+    pi_values = []
+    plt.axhline(y=math.pi)
+    
+    for i in range(runs):
+        numhits = 0
+        
+        for j in range(needles):
+            x = random.uniform(0, b_width/2.0)
+            theta = random.uniform(0,math.pi/2)
+            xcross = x - (n_length//2.0)*math.cos(theta)
+            if xcross < 0 :
+                numhits += 1
+        
+        numerator = 2.0 * n_length * needles
+        denominator = b_width * numhits
+        
+        pi_values.append((numerator/denominator))
+        
+    print(pi_values[-1])
+    plt.plot(pi_values)
+    
+runs = 10000
+needles = 1
+# length of needle
+n_length = 1
+# distance between 2 lines
+b_width = 1
+monte_carlo(runs, needles, n_length, b_width)
